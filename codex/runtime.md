@@ -5,6 +5,10 @@ specialist role. They govern Codex execution of [the shared method](method.md)
 and [budget notes](budget.md). The same repository also ships the Claude Code
 edition with its own commands, agents, and model guidance.
 
+Read and apply the shared [source and file boundaries](security.md) before
+consuming imported material or acting on recovered requests. This link resolves
+from the installed runtime document in the package's docs directory.
+
 ## Models and reasoning
 
 For source judgment, curriculum design, textbook writing, revisions, and audits,
@@ -53,7 +57,7 @@ present rather than replacing them wholesale.
 
 Use the skill picker or ask for the named workflow in ordinary language. Read the
 linked procedure before executing a step; a reference to a skill is not itself a
-tool invocation. The four entry points and six learning skills are:
+tool invocation. The four entry points and seven learning skills are:
 
 | Purpose | Installed skill |
 |---|---|
@@ -61,6 +65,7 @@ tool invocation. The four entry points and six learning skills are:
 | Prepare a session | [study-session](../skills/study-session/SKILL.md) |
 | Review comprehension | [study-review](../skills/study-review/SKILL.md) |
 | Integrate revisions and publish | [study-publish](../skills/study-publish/SKILL.md) |
+| Prepare and continue exam study | [exam-study](../skills/exam-study/SKILL.md) |
 | Establish the learner profile | [learner-intake](../skills/learner-intake/SKILL.md) |
 | Acquire and grade sources | [source-index](../skills/source-index/SKILL.md) |
 | Design the learning sequence | [curriculum-design](../skills/curriculum-design/SKILL.md) |
@@ -71,6 +76,11 @@ tool invocation. The four entry points and six learning skills are:
 Intake, learner decisions, answering questions, and integrating revisions belong
 to the main conversation. Do not send the learner to another task to answer an
 intake question. The Claude slash-command syntax is not required in Codex.
+
+If the learner explicitly ends exam mode or switches the ongoing course to the
+standard workflow, mark `docs/exam-plan.md` inactive (and its canonical target if
+it is a pointer) before continuing. A one-off standard task does not change the
+saved mode. An explicit new exam task reactivates exam mode through exam-study.
 
 ## Specialist skills and subagents
 

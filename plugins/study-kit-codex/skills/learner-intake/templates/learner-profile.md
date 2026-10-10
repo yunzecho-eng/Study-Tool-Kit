@@ -39,6 +39,9 @@
 
 - **Style**: {{e.g. no bulleted term lists, continuous prose, no translationese}}
 - **Language**: {{language of documents and conversation}}
+- **Explanation language**: {{if different from the shared language}}
+- **Assessment/artifact language**: {{if different; includes question text, graph labels, and solutions}}
+- **Exam preferences**: {{if exam mode is active, use docs/exam-plan.md for per-subject scope and output settings}}
 - **Visuals**: {{preference}}
 - **Avoid**: {{phrasing or format the learner has said they dislike}}
 

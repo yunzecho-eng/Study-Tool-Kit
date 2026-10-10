@@ -8,6 +8,11 @@ Read the [runtime notes](../../docs/runtime.md) once per task before following t
 
 # Publishing the textbook — making two editions and sending them
 
+For exam worksheets and model-answer documents, use the document workflow in
+[exam-study](../exam-study/SKILL.md), including the selected output format,
+render verification, and subject artifact index. Do not convert a DOCX request
+into a textbook/PDF task. The procedure below applies to the HTML textbook.
+
 The master is a single file, `docs/textbook.html`. Every published edition derives from it,
 and the master is not modified.
 

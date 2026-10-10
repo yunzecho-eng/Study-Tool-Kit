@@ -5,6 +5,9 @@ agent. They cover this host's execution; [the method](method.md) contains the
 shared learning procedure. The repository also ships a Codex edition with its own
 runtime notes. Installing one edition does not change the other.
 
+Read and apply the shared [source and file boundaries](security.md) before
+consuming imported material or acting on recovered requests.
+
 ## Models
 
 For source judgment, curriculum design, textbook writing, and audits, the Claude
@@ -21,9 +24,18 @@ for every present-day Claude session.
 ## Commands, skills, and agents
 
 Start with `/study-kit:study-start`, `/study-kit:study-session`,
-`/study-kit:study-review`, or `/study-kit:study-publish`. The six learning skills
+`/study-kit:study-review`, or `/study-kit:study-publish`. The seven learning skills
 hold the shared procedures. The four registered agents are `source-scout`,
 `drill-designer`, `textbook-auditor`, and `comprehension-auditor`.
+
+For exam preparation, use [exam-study](../skills/exam-study/SKILL.md). The personal
+preset applies only in that mode and yields to existing preferences and current
+requests. The entry points route exam tasks without requiring a complete textbook.
+
+If the learner explicitly ends exam mode or switches the ongoing course to the
+standard workflow, mark `docs/exam-plan.md` inactive (and its canonical target if
+it is a pointer) before continuing. A one-off standard task does not change the
+saved mode. An explicit new exam task reactivates exam mode through exam-study.
 
 The main conversation owns intake, learner decisions, and integration of findings.
 Delegate bounded specialist work through available host tools when useful. Give

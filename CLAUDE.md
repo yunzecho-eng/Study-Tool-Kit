@@ -1,5 +1,10 @@
 # study-kit — a study support bundle
 
+This checkout includes the **2.1.0-personal.2** personal exam-study adaptation.
+Read [the adaptation record](plugins/study-kit/docs/personal-edition.md) when
+maintaining it. The general method remains available; personal defaults apply
+only to the exam route and yield to explicit learner choices.
+
 ## 0. What this folder is — read this before anything else
 
 This folder is **not study material. It is a tool for building a course of study.** It
@@ -30,6 +35,10 @@ not a handover note's, and a note that has turned into a changelog is worse than
 Then sort the user's first request into one of three.
 
 - **They want to begin a course of study** → go to section 2. Start with intake.
+- **They want exam preparation or to resume an active exam plan** → use
+  `plugins/study-kit/skills/exam-study/SKILL.md`. Reuse the existing study project
+  and ask only for details missing for the task. Do not start full-course intake
+  or require a textbook unless that is what the learner requested.
 - **They want to change the kit** → work under the rules in section 6.
 - **They want to see what this is** → explain from `README.md` and
   `plugins/study-kit/docs/method.md`. There is no need to read every file in this folder
@@ -39,6 +48,9 @@ If the sorting is unclear, ask. Guessing and creating a study project is the har
 to undo.
 
 ## 2. Beginning a course of study — the opening questions
+
+This section is the standard-course route. Exam tasks use `exam-study` and its
+bounded intake, scope record, and independent explanation/assessment languages.
 
 **Do not wait for the learner to volunteer their background. Ask first.** The detailed
 procedure is in `plugins/study-kit/skills/learner-intake/SKILL.md`; what is written here

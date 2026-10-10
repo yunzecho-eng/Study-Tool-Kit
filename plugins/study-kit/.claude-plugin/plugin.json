@@ -1,10 +1,12 @@
 {
   "name": "study-kit",
-  "version": "2.0.0",
-  "description": "Study support bundle for quickly learning what you need in an adjacent field when you lack time for a full textbook and all its exercises. Start from what you already know, skip familiar material, and build a focused plan and textbook. Includes 4 agents, 6 skills, and 4 commands.",
+  "version": "2.1.0-personal.2",
+  "description": "Study Kit Personal, a personal adaptation of Hyeonoh Hur's Study Kit. Build focused study materials and prepare for exams from verified course sources, with answer-writing practice and reusable preferences. Includes 4 agents, 7 skills, and 4 commands.",
   "author": {
     "name": "Hyeonoh Hur"
   },
+  "homepage": "https://github.com/yunzecho-eng/Study-Tool-Kit",
+  "repository": "https://github.com/yunzecho-eng/Study-Tool-Kit",
   "license": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
   "keywords": [
     "learning",
@@ -13,6 +15,8 @@
     "textbook",
     "personalized-learning",
     "adult-learning",
-    "source-vetting"
+    "source-vetting",
+    "exam-preparation",
+    "answer-writing"
   ]
 }

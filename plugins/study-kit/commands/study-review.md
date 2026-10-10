@@ -5,7 +5,14 @@ description: Audit comprehension — find concepts not understood from what was 
 Read the [runtime notes](../docs/runtime.md) once per task before following this procedure.
 
 
-Call the `comprehension-auditor` agent to find what the learner asked back about in recent
+For an exam answer or practice set, including a continuation recorded as active
+exam mode in `docs/exam-plan.md`, use [exam-study](../skills/exam-study/SKILL.md).
+Review the supplied attempt against its source and criterion, record whether
+the evidence is an observed answer or a learner report, and prepare the next
+step within the agreed scope. An explicit standard-course request takes
+precedence. Do not require a textbook audit for this route.
+
+For a standard course, call the `comprehension-auditor` agent to find what the learner asked back about in recent
 conversation records, study notes, and material recovered from the secondary track, and take
 back a report of the concepts judged not understood along with proposed re-explanations.
 

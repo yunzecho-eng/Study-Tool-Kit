@@ -6,7 +6,13 @@ description: Prepare the next session — review the questions received, the bri
 Read the [runtime notes](../../docs/codex-runtime.md) once per task before following this procedure.
 
 
-This is the preparation the conductor does between sessions. Finish all of it here, so that
+For exam practice, or a continuation recorded as active exam mode in
+`docs/exam-plan.md`, use [exam-study](../exam-study/SKILL.md) to resume the
+last task, remaining questions, and next practice step. Preserve excluded scope
+when raising difficulty. An explicit standard-course request takes precedence.
+Complete that route without requiring a textbook or duplicating the steps below.
+
+This is the preparation the conductor does between standard-course sessions. Finish all of it here, so that
 the session time goes only to understanding and diagnosis.
 
 1. If anything has been recovered into `docs/inbox/`, read it first and move handled files to

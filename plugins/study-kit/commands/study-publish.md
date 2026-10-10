@@ -5,6 +5,13 @@ description: Revise and publish the textbook, and send it to the learner
 Read the [runtime notes](../docs/runtime.md) once per task before following this procedure.
 
 
+For an exam worksheet or answer document, including a continuation recorded as
+active exam mode in `docs/exam-plan.md`, follow the document workflow in
+[exam-study](../skills/exam-study/SKILL.md). Apply the selected format and artifact
+language, verify the rendered file, and update the subject's latest-file index.
+That route does not require `docs/textbook.html` or two PDF editions. An explicit
+request to publish the standard textbook uses the steps below instead.
+
 1. **Open `docs/textbook-revisions.md` first.** Fold in every waiting item. If a large item
    must be split, tell the learner and settle the scope of this edition.
 2. Amend `docs/textbook.html` under the conventions of the `textbook-authoring` skill and

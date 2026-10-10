@@ -4,12 +4,17 @@ Study Kit helps you turn an existing area of expertise into a starting point for
 learning an adjacent field. It asks about your background and goal, checks sources,
 builds a plan and textbook, and carries questions back into textbook revisions.
 
-Start with the [public demo](https://study-kit-demo.gjgusdh.chatgpt.site).
+Start with the upstream author's [public demo](https://study-kit-demo.gjgusdh.chatgpt.site).
 It is a Korean-language illustrative walkthrough, with a learner brief, a short
 plan, a textbook passage, a question, and a revised explanation. The example is
 newly written demonstration content, not a real learner record or evidence of
 learning outcomes. Reading it requires no installation; it does not run a model.
 Study Kit itself can produce material in the learner's chosen language.
+
+This repository is the private personal adaptation maintained by `yunzecho-eng`.
+Its exam mode and personal defaults are described in the
+[adaptation record](../plugins/study-kit/docs/personal-edition.md). The public
+demo illustrates the upstream method, not the personal edition's exam workflow.
 
 ## Who should try it first
 
@@ -32,9 +37,13 @@ scope, sources, and model; there is no verified universal time or cost estimate.
 
 ## Install and begin
 
-Follow the [installation instructions](../README.md#install) for your host, then
+Follow the [installation instructions](../README.md#get-started) for your host, then
 open a new conversation in a separate study project. Keep your learning files out of
 the kit repository.
+
+Remote installation and downloads require access to
+`yunzecho-eng/Study-Tool-Kit`. Historical installation smoke tests cover
+upstream 2.0.0; this private edition's installation remains unverified.
 
 Tell the agent:
 
@@ -55,8 +64,9 @@ your AI host's own data handling still applies.
 
 One concrete point is enough: an installation failure, an explanation that assumed
 too much, or a step where the procedure stopped helping. Use the relevant
-[issue form](https://github.com/H-Hur/study-kit/issues/new/choose), or reply in the
-community post where you found the kit. GitHub feedback requires a GitHub account.
+[issue form](https://github.com/yunzecho-eng/Study-Tool-Kit/issues/new/choose)
+for this personal edition. GitHub feedback requires an account with access to
+the private repository.
 
 Describe the shape of the problem without uploading your textbook, profile, notes,
 or private conversation. See [Contributing](../CONTRIBUTING.md) for examples.

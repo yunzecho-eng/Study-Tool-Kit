@@ -1,7 +1,7 @@
 {
   "name": "study-kit",
   "interface": {
-    "displayName": "Study Kit"
+    "displayName": "Study Kit Personal"
   },
   "plugins": [
     {

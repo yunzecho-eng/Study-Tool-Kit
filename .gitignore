@@ -2,3 +2,33 @@
 .claude/settings.local.json
 dist/
 __pycache__/
+
+# Local credentials and account settings are never release inputs.
+.env
+.env.*
+!.env.example
+!.env.template
+credentials.json
+secrets.json
+token.json
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.pem
+*.key
+*.p12
+*.pfx
+/.codex/
+/.venv/
+
+# Learner records belong in a separate study project, not the kit root.
+/REFERENCES.md
+/references/
+/docs/learner-profile.md
+/docs/exam-plan.md
+/docs/curriculum.md
+/docs/worklog.md
+/docs/textbook-revisions.md
+/docs/notes/
+/docs/reports/

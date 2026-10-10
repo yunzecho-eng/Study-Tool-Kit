@@ -5,7 +5,13 @@ description: Begin a new course of study — from learner intake to standing up 
 Read the [runtime notes](../docs/runtime.md) once per task before following this procedure.
 
 
-Open a new study project. Follow this order.
+For an exam-preparation request, use [exam-study](../skills/exam-study/SKILL.md)
+to establish the exam plan and continue the requested task. Reuse an existing
+study folder, materials, and preferences. This route does not require a full
+textbook or repeating the complete intake. An explicit request for the standard
+course workflow takes precedence over a saved exam mode.
+
+For a standard course of study, open a new study project. Follow this order.
 
 1. Read the kit's method (`${CLAUDE_PLUGIN_ROOT}/docs/method.md`) to confirm the whole
    sequence. Kit files are always addressed through `${CLAUDE_PLUGIN_ROOT}` — a bare

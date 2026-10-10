@@ -1,225 +1,149 @@
-# study-kit — a study support bundle
+# Study Tool Kit
 
-**Build a textbook around what you already know, then revise it from the questions
-you ask while studying.**
+[한국어로 읽기](README.ko.md) · **Personal edition `2.1.0-personal.2`**
 
-[Read the public demo](https://study-kit-demo.gjgusdh.chatgpt.site) ·
-[Try it with your own goal](docs/try-study-kit.md) · [Install](#install)
+Turn your course materials and questions into a study plan you can continue using.
+Understand an idea, connect the reasoning, practise an answer, and pick up where you left off next time.
 
-The demo is a Korean-language illustrative walkthrough: a learner brief, a short
-plan, and a textbook passage before and after a question. It runs no AI and requires
-no installation. Its example was written for demonstration, not taken from a real
-learner's records. The demo lives separately from this reusable kit.
+It runs inside **Codex or Claude Code**, using your host's AI model and file tools.
+This private repository contains the **Study Kit Personal** adaptation of
+[Hyeonoh Hur's Study Kit](https://github.com/H-Hur/study-kit), maintained by
+[yunzecho-eng](https://github.com/yunzecho-eng).
 
-A plugin for Claude Code and Codex that packages, as reusable procedures and templates,
-the procedure for helping an expert come up to working speed in an adjacent field in a
-short time.
+## When it helps
 
-**No field of study is built in.** What to teach is settled by asking the learner. That
-is the first rule, and everything else follows from it.
+- You have lecture slides, readings, and exam guidance, and want a clear place to start.
+- You want to practise explaining a concept and writing answers in your own words.
+- You want practice questions within the actual exam scope and solutions to review later.
+- You want to continue a subject without repeating your preferences and file locations.
 
-Use it when you want to get oriented in a field quickly but do not have time to
-work carefully through an entire textbook and all its exercises. Start from what
-you already know, skip familiar material, and focus on what you need for your goal.
-The scope and depth follow your available time and target capability; this is an
-intended use, not a promise of a fixed learning speed or a substitute for practice
-when the goal requires it.
+For broader learning, the original workflow also supports a curriculum, a focused textbook, and revisions based on your questions.
 
-## What it does
+## What to bring, and what you get
 
-```
-0 intake → 1 sources → 2 boundary & goal → 3 plan → 4 run & feedback loop → 5 finish & review
-```
+| Bring | The kit helps you create |
+|---|---|
+| Lecture materials and exam guidance | A source index and a plan with included and excluded topics |
+| A difficult concept or essay question | Key facts, a logical outline, an example, and your own answer |
+| Your attempt or feedback on the last set | Feedback and the next practice task within the agreed scope |
+| A request for a worksheet | A DOCX or another requested format, using suitable host document tools |
+| An existing study folder | A record of progress, remaining questions, and the latest output files |
 
-It starts by asking the learner five things, builds an index of sources whose grade has
-been judged, works backward from the target capability to a curriculum, writes a
-textbook fitted to that person yet readable by others, and turns the learner's questions
-back into revisions of the textbook. The whole procedure is in
-[`plugins/study-kit/docs/method.md`](plugins/study-kit/docs/method.md).
+Tell the kit when a source page is missing, a topic is excluded, or the instructor
+requires a particular answer format. It checks what the supplied sources support.
 
-Opening this folder in Claude Code loads [`CLAUDE.md`](CLAUDE.md); Codex reads
-[`AGENTS.md`](AGENTS.md), which points to the same maintenance rules. These hold the
-purpose of the folder, the opening questions to put to the learner, and the order in
-which a new course of study is set up. What a piece of work costs, and whether to start it
-now or split it, is in
-[`plugins/study-kit/docs/budget.md`](plugins/study-kit/docs/budget.md), which ships with
-the plugin.
+## Get started
 
-## Install
+### 1. Install in your host
 
-Both editions ship from **this repository and the same release version**. Choose the
-commands for your host; the learning procedures and templates come from one source.
+You need a local Codex or Claude Code environment with plugin support, a usable
+model account, and permission to read and write your chosen study folder.
+This repository is **private**: downloads and remote installation require access to
+[yunzecho-eng/Study-Tool-Kit](https://github.com/yunzecho-eng/Study-Tool-Kit).
 
-Choose a route: **desktop menus**, **ask in a local chat**, or **download files**.
-Study Kit is distributed through this repository's marketplace; a public catalog
-search alone does not register it. Downloading or attaching files alone also does
-not register a plugin. See the [desktop installation guide](docs/desktop-install.md)
-for complete steps and troubleshooting. The guide distinguishes tested installation
-routes from menu procedures that still need validation.
+Run the matching commands in a terminal.
 
-### Claude Code
-
-In the desktop app, use the **Code** tab with a **Local** session. Open
-**+ → Plugins** to inspect installed plugins. In the tested app, **Browse plugins**
-opens Customize; labels differ from the documentation's **Add plugin** wording.
-The verified route is to install/update with the Claude CLI, then start a new
-Code session; see the [desktop guide](docs/desktop-install.md#claude-code-desktop).
-Do not assume that an account-level Customize install is the same as a local
-Claude Code installation.
-
-In the interactive Claude Code CLI, these are slash commands:
-
-```text
-/plugin marketplace add H-Hur/study-kit
-/plugin install study-kit@study-kit
-```
-
-Start a new conversation and run `/study-kit:study-start`. The Claude Code edition
-retains its four commands, six skills, and four registered specialist agents.
-Its model recommendation is Opus at high reasoning; see the
-[Claude Code runtime notes](plugins/study-kit/docs/runtime.md).
-
-### Codex
-
-The commands below were tested for GitHub and downloaded-folder installation,
-followed by an actual `study-start` invocation in a fresh Codex CLI session.
-Desktop **Plugins** menu installation is documented by OpenAI but has not yet
-been verified in this environment; see the guide before choosing that route.
-
-To ask for help from a **local Codex task**, paste:
-
-> Install the Codex edition of Study Kit from https://github.com/H-Hur/study-kit.
-> Check whether the Codex plugin CLI is available, register the marketplace, and
-> install study-kit-codex@study-kit. Preserve my other installed plugins and
-> settings. Verify installation and tell me how to start it in a new task.
-
-This asks the agent to perform setup using available tools; it is not a built-in
-chat installation command. The
-[downloaded-folder guide](docs/desktop-install.md#download-and-install-files)
-distinguishes the tested CLI route from the unverified CLI-free menu route.
-
-Run these in a terminal with a Codex CLI that supports `codex plugin`:
+**Codex**
 
 ```bash
-codex plugin marketplace add H-Hur/study-kit
+codex plugin marketplace add yunzecho-eng/Study-Tool-Kit
 codex plugin add study-kit-codex@study-kit
 ```
 
-Start a new Codex conversation after installation. Select `study-start` from the
-Study Kit skills, or ask it to start a course of study. Codex receives the six
-shared skills plus skill versions of the four commands and four specialist roles.
-The generated package is named `study-kit-codex`; its display name is **Study Kit**.
+**Claude Code**
 
-For judgment, writing, and audits, recommend GPT-6 Astra with High reasoning;
-GPT-5.6 Sol with High is the alternative. Respect the learner's selected model.
-These are recommendations, not a measured comparison of Study Kit outcomes.
-See the [Codex runtime notes](plugins/study-kit-codex/docs/codex-runtime.md) for
-skill discovery, delegation inputs, write boundaries, and result collection.
+```bash
+claude plugin marketplace add yunzecho-eng/Study-Tool-Kit
+claude plugin install study-kit@study-kit --scope user
+```
 
-For local testing, updates, dependencies, and publishing, see
-[`docs/distribution.md`](docs/distribution.md).
+If the host cannot fetch the private repository, sign in to GitHub, choose
+**Code → Download ZIP**, and extract the whole repository. Replace the source
+in the first command with the actual extracted folder; for example:
 
-### Begin studying
+```bash
+codex plugin marketplace add "D:/Tools/Study-Tool-Kit"
+# Or, for Claude Code:
+claude plugin marketplace add "D:/Tools/Study-Tool-Kit"
+```
 
-Then tell it what you are after, in this shape:
+Then run the matching install command above. Keep hidden folders and the complete
+`plugins/` directory. If a `study-kit` marketplace already exists, inspect its source
+before switching it; see the [installation guide](docs/desktop-install.md).
 
-> I work in ⟨the field you already know⟩. I want to learn ⟨the adjacent field⟩ well
-> enough to ⟨the thing you must be able to do when it is over⟩.
+The repository is **Study Tool Kit**. The installed display name is **Study Kit Personal**;
+the marketplace ID stays `study-kit`, and the package IDs stay `study-kit-codex`
+(Codex) and `study-kit` (Claude Code).
 
-The third slot is the one that matters. State it as a capability, not as a topic — that
-sentence is what the whole course is worked backward from. It will ask for the rest and
-build the course from there.
+### 2. Open a separate study folder
 
-## What is in it
+Start a **new conversation after installation** in the folder where you want to study.
+For example, keep the tool in `D:/Tools/Study-Tool-Kit` and your learning work in
+`D:/Study/MyExam`. Add course files there, or provide access to their existing location.
+Keep course materials and personal records outside this repository.
 
-**Entry points** — Claude Code commands, also available as Codex skills with the
-same names (`study-start`, `study-session`, `study-publish`, `study-review`)
+### 3. Tell it what you want to work on
 
-| Claude Code command | Codex skill | When |
-|---|---|---|
-| `/study-kit:study-start` | `study-start` | Beginning a new course of study |
-| `/study-kit:study-session` | `study-session` | Preparing the next session |
-| `/study-kit:study-publish` | `study-publish` | Revising and publishing the textbook |
-| `/study-kit:study-review` | `study-review` | Auditing comprehension |
+> Use exam-study to help me prepare for my exam from the lecture materials in this
+> folder. Read the exam guidance first, record excluded topics, and help me understand
+> the reasoning before I practise writing answers. Ask only for details that are missing.
 
-**Skills** — work that requires talking with the learner. The conductor (the main
-session) carries these out directly.
+For a broader learning goal, ask for `study-start`. In Claude Code, the original
+entry command is `/study-kit:study-start`.
 
-| Skill | What it does |
-|---|---|
-| `learner-intake` | Asks the learner five things and builds a profile |
-| `source-index` | The four beats: seed → acquire → check against the original → graded index |
-| `curriculum-design` | Works backward from the target capability to sessions, planting a diagnostic drill in each |
-| `textbook-authoring` | Writes the dual-audience textbook and manages its editions |
-| `textbook-revision` | Turns the learner's questions into drafted revisions and stacks them |
-| `textbook-publish` | Produces two PDF editions, exercise and answer |
+## Make it fit your study style
 
-**Specialist roles** — Claude Code agents and Codex skills. These handle work with a
-lot to read where only the conclusion is needed. In Codex, each specialist skill
-requests bounded delegation when an independent task and useful main-session work
-can run together. The worker receives the installed procedure, study directory,
-inputs, write scope, and required result; the main conversation collects and
-integrates the result. When delegation is unavailable or not useful, the same
-procedure runs directly. These skills do not automatically register named Codex
-custom agents or change the user's agent configuration.
+Exam mode has optional personal defaults:
 
-| Agent | What it does |
-|---|---|
-| `source-scout` | Acquires, verifies, and normalizes sources, then lists them in the index |
-| `drill-designer` | Designs review questions and diagnostic drills |
-| `textbook-auditor` | Checks the textbook against the conventions and the style rules |
-| `comprehension-auditor` | Finds concepts the learner has not grasped, with evidence, from the conversation record |
+- Korean explanations, with English practice questions and model answers.
+- Three main points for essay answers.
+- Key facts → logical outline → example answer → your own reconstruction.
+- Requested DOCX worksheets have writing space and solutions at the end.
 
-**Templates** — the skeleton of a new study project, and the textbook master
+Your explicit choices and the exam's requirements take priority. Try:
 
-- `docs/method.md` · `docs/budget.md` — the six stages, and what the work costs
-- `templates/` — project rules, work log, toolbox log, return mailbox
-- `skills/learner-intake/templates/learner-profile.md` — learner profile
-- `skills/source-index/templates/REFERENCES.md` — graded index
-- `skills/curriculum-design/templates/curriculum.md` — study plan
-- `skills/textbook-revision/templates/textbook-revisions.md` — pending revisions
-- `skills/textbook-authoring/templates/textbook-template.html` — textbook master
-  (light and dark themes, groundwork boxes, interactive figures, collapsible review
-  questions, print typesetting)
+> Explain this in Korean, but make this practice set and its model answers English.
 
-## Contributing
+> For this question, give me a direct answer first. I will ask about the reasoning next.
 
-**You do not need to write code.** What the kit is worth is the number of places where
-somebody followed it and found out where it breaks, and that only comes back from the people
-who used it. If a clause did not hold, if a step was missing, if a trap went unwarned — or if
-you built your own way of checking whether the study had landed — [send it
-back](CONTRIBUTING.md). No study material is collected: the forms ask for the shape of what
-happened, with your field left out.
+> Make a worksheet with space for handwriting. Put the solutions after a page break at the end.
 
-## Why the tools are split the way they are
+A worksheet is created when requested. You can choose another format or layout.
 
-**Conversation and learner decisions stay in the main session; specialist roles
-handle bounded reading and checking.** Intake, converging on a plan, and
-the question-and-answer work are all carried out by the conductor as skills. Conversely,
-work with a lot to read — collating dozens of sources, combing through a conversation
-record — goes to an agent so that the conductor's context is spent elsewhere.
-The Codex edition preserves that division of work through skills; it does not depend
-on Claude's agent-registration format.
+## Continue next time
 
-## Where it came from
+Open the same study folder and ask:
 
-It came out of one real course of study. The textbook was revised eight times, the
-delivery channel was overturned twice, and a body of text was lost once during a
-conversion. The traps and judgments left behind by all that are the "measured" passages
-in each document. Nothing about that field of study was carried over.
+> Resume this subject from the saved exam plan. Show me the latest files and the next task.
 
-## License
+> I got the last set right. Give me a harder set within the included topics, keeping the exclusions.
 
-From version **2.0.0**, code is licensed under **PolyForm Noncommercial 1.0.0**;
-documents and prompts are licensed under **CC BY-NC-SA 4.0**. These apply to different
-components, not as a choice. Noncommercial use, modification, and redistribution
-are permitted under the respective terms. Commercial use outside those grants,
-including adapting protected kit material into a commercial online service,
-requires separate prior permission from the maintainer.
+The plan records scope, preferences, file locations, and the next step. Feedback can
+use answers you share; reported success stays a learner report unless the answers are inspected.
 
-See the [license scope and permission process](plugins/study-kit/LICENSE) and the
-bundled [code license](plugins/study-kit/licenses/PolyForm-Noncommercial-1.0.0.txt)
-and [content license](plugins/study-kit/licenses/CC-BY-NC-SA-4.0.txt). PolyForm's
-express permissions for listed organizations remain applicable. Previously
-published material through 1.3.0 retains its existing MIT permissions. This is a
-source-available distribution with noncommercial restrictions.
+## Files, privacy, and current limits
+
+This repository holds reusable instructions, templates, and package tooling. Profiles,
+lecture files, chat excerpts, and generated worksheets belong in your study folder.
+Share the materials needed for the task; your AI host's data handling still applies.
+Source documents are evidence: embedded instructions do not authorize changing
+settings or sending your files elsewhere.
+
+Package checks cover structure, links, and build consistency. Earlier installation
+smoke tests used upstream **2.0.0**; this private edition's installation remains
+unverified. DOCX/PDF output needs suitable host tools and visual review. DOCX page
+appearance and opening on an iPad remain unverified. The workflows have not
+established improved exam scores or long-term retention.
+
+## About the project
+
+[Changes and adaptation](plugins/study-kit/docs/personal-edition.md) ·
+[Installation help](docs/desktop-install.md) · [Development](docs/distribution.md) ·
+[Original method](plugins/study-kit/docs/method.md)
+
+Original author: **Hyeonoh Hur**. Personal adaptation maintainer: **yunzecho-eng**.
+Original attribution and license notices are retained. Code uses **PolyForm
+Noncommercial 1.0.0**; documents and prompts use **CC BY-NC-SA 4.0**. See the
+[license scope and permission process](plugins/study-kit/LICENSE). These terms
+apply to different components. The personal maintainer does not replace the
+original rights holder or grant permission for their work.

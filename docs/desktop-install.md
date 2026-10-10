@@ -1,34 +1,41 @@
 # Install Study Kit in desktop apps
 
-Tested on 2026-09-08 with Codex CLI 0.153.4, Claude Code CLI 2.1.260, and
-Claude desktop 1.46388.3. These steps cover local sessions. Menu labels vary.
+The upstream Study Kit 2.0.0 installation was tested on 2026-09-08 with Codex
+CLI 0.153.4, Claude Code CLI 2.1.260, and Claude desktop 1.46388.3. These steps
+cover local sessions. Menu labels vary.
 
-**Use the tested CLI-assisted route for now.** GitHub and extracted-folder
-installation succeeded in both hosts. Claude's installed skill ran in a new
+**The CLI-assisted route was tested for upstream 2.0.0.** GitHub and extracted-folder
+installation of that version succeeded in both hosts. Claude's installed skill ran in a new
 Code desktop session; Codex's installed skill ran in a fresh CLI session.
 Codex desktop menu installation and an entirely CLI-free installation remain
 unverified. See the [test record](desktop-install-test.md) for exact coverage.
 The learning project belongs in a separate folder from the downloaded kit.
 
+The current examples target **Study Kit Personal**, maintained by `yunzecho-eng`.
+Its repository is private: GitHub installation and ZIP downloads require access
+to `yunzecho-eng/Study-Tool-Kit`. These personal-edition installation routes
+have not yet been smoke-tested. If the host cannot authenticate to the private
+repository, use an authorized local checkout and the local marketplace route.
+
 | Host | Marketplace | Plugin to install | Start in a new conversation |
 |---|---|---|---|
-| Codex desktop | `study-kit` / Study Kit | `study-kit-codex` / Study Kit | Ask for the Study Kit `study-start` skill |
+| Codex desktop | `study-kit` / Study Kit Personal | `study-kit-codex` / Study Kit Personal | Ask for the Study Kit `study-start` skill |
 | Claude Code desktop, Code tab | `study-kit` | `study-kit` | `/study-kit:study-start` |
 
 ## Codex desktop
 
 ### Desktop menus (documentation-based; not yet tested)
 
-1. Open **Plugins** and look for the Study Kit marketplace/source. It is a repo
+1. Open **Plugins** and look for the Study Kit Personal marketplace/source. It is a repo
    marketplace, separate from the public plugin catalog.
 2. If the source is missing and the Codex CLI is available, run this in a terminal:
 
    ```bash
-   codex plugin marketplace add H-Hur/study-kit
+   codex plugin marketplace add yunzecho-eng/Study-Tool-Kit
    ```
 
 3. Restart the desktop app after registering the source. Open **Plugins**, choose
-   Study Kit, open **Study Kit** (`study-kit-codex`), and select the install button.
+   Study Kit Personal, open **Study Kit Personal** (`study-kit-codex`), and select the install button.
 4. Start a new local task in a separate study folder. Ask: "Use Study Kit's
    study-start skill to help me begin a course of study."
 
@@ -42,7 +49,8 @@ codex plugin add study-kit-codex@study-kit
 
 In a local Codex task that can run commands, paste:
 
-> Install the Codex edition of Study Kit from https://github.com/H-Hur/study-kit.
+> Install the Codex edition of Study Kit Personal from https://github.com/yunzecho-eng/Study-Tool-Kit.
+> Use my authorized GitHub access, or a local checkout if private access is unavailable.
 > Check whether the Codex plugin CLI is available, register the marketplace, and
 > install study-kit-codex@study-kit. Preserve my other installed plugins and
 > settings. Verify installation and tell me how to start it in a new task.
@@ -56,12 +64,12 @@ built-in chat commands.
 
 ## Claude Code desktop
 
-### Verified CLI-assisted desktop route
+### CLI-assisted desktop route (verified for upstream 2.0.0)
 
 1. In a terminal, register and install the plugin:
 
    ```bash
-   claude plugin marketplace add H-Hur/study-kit
+   claude plugin marketplace add yunzecho-eng/Study-Tool-Kit
    claude plugin install study-kit@study-kit --scope user
    ```
 
@@ -74,8 +82,8 @@ built-in chat commands.
 
 3. Open the desktop **Code** tab, choose **Local**, and select a separate study
    folder. Start a new session and ask it to invoke `study-kit:study-start`.
-   This successfully loaded version 2.0.0 and asked the first two intake questions
-   in the desktop test, even though a separate CLI inference attempt had an
+   The historical upstream desktop test successfully loaded version 2.0.0 and
+   asked the first two intake questions, even though a separate CLI inference attempt had an
    expired OAuth session.
 4. Open **+ → Plugins** to inspect the installed plugin. In the tested Korean UI,
    **플러그인 탐색** (Browse plugins) opened **사용자 지정** (Customize), whose
@@ -93,8 +101,9 @@ cloud and WSL sessions have different limitations and are outside this guide.
 
 In a local **Code** session, paste:
 
-> Install the Claude Code edition of Study Kit from
-> https://github.com/H-Hur/study-kit for my user account. Check whether the Claude
+> Install the Claude Code edition of Study Kit Personal from
+> https://github.com/yunzecho-eng/Study-Tool-Kit for my user account.
+> Use my authorized GitHub access, or a local checkout if private access is unavailable. Check whether the Claude
 > Code CLI is available, register the marketplace, and install study-kit@study-kit.
 > Preserve my other plugins and settings. Verify installation and tell me how to
 > start /study-kit:study-start in a new local session.
@@ -105,8 +114,8 @@ appears in **+ → Plugins** after installation.
 
 ## Download and install files
 
-Download the **whole repository** using
-[GitHub → Code → Download ZIP](https://github.com/H-Hur/study-kit), extract it,
+Sign in with a GitHub account that has access, then download the **whole repository** using
+[GitHub → Code → Download ZIP](https://github.com/yunzecho-eng/Study-Tool-Kit), extract it,
 and keep the extracted folder in a stable location. Use the folder containing
 `README.md`, `.agents/`, `.claude-plugin/`, and `plugins/`; preserve hidden files.
 No build step is required. A single README or a chat attachment is not the plugin.
@@ -116,14 +125,14 @@ No build step is required. A single README or a chat attachment is not the plugi
 With the CLI, replace the example path with the extracted repository root:
 
 ```bash
-codex plugin marketplace add "/absolute/path/to/study-kit-main"
+codex plugin marketplace add "/absolute/path/to/Study-Tool-Kit-main"
 codex plugin add study-kit-codex@study-kit
 ```
 
 **CLI-free alternative — documented, not tested here:** add/open the extracted repository as a local Codex project. It
 already contains `.agents/plugins/marketplace.json` pointing to the generated
 Codex package. Restart the app, open that project, then use **Plugins** to select
-its Study Kit marketplace and install. After installation, start a new task in
+its Study Kit Personal marketplace and install. After installation, start a new task in
 an independent study folder.
 
 **Plugin-only ZIP alternative — not tested here:** if you have only the Codex plugin package ZIP, extract it and ask the built-in
@@ -137,7 +146,7 @@ Do not manually copy files into the plugin cache.
 Register the extracted repository using the Claude Code CLI, then install:
 
 ```bash
-claude plugin marketplace add "/absolute/path/to/study-kit-main"
+claude plugin marketplace add "/absolute/path/to/Study-Tool-Kit-main"
 claude plugin install study-kit@study-kit --scope user
 ```
 
@@ -189,7 +198,8 @@ has been validated in Chat or Cowork.
 - [Anthropic: Cowork plugins](https://claude.com/docs/cowork/guide/plugins):
   the separate repository and file-upload installation surface.
 
-The [test record](desktop-install-test.md) separates installation success,
+The upstream 2.0.0 [test record](desktop-install-test.md) separates installation success,
 actual skill execution, inspected UI controls, and blocked or untested paths.
 A CLI success is not evidence that the desktop menu installer works. An intake
 smoke test is not validation of a complete course or textbook publishing workflow.
+It also does not establish access to or installation from this private personal repository.

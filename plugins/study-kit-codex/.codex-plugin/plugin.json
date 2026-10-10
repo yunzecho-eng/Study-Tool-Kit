@@ -1,10 +1,12 @@
 {
   "name": "study-kit-codex",
-  "version": "2.0.0",
-  "description": "Study support bundle for quickly learning what you need when you lack time for a full textbook and all its exercises. Skip familiar material and build a focused plan and textbook from your background and goal. Includes 14 Codex skills.",
+  "version": "2.1.0-personal.2",
+  "description": "Study Kit Personal, a personal adaptation of Hyeonoh Hur's Study Kit. Build focused study materials and prepare for exams from verified course sources, with answer-writing practice and reusable preferences. Includes 15 Codex skills.",
   "author": {
     "name": "Hyeonoh Hur"
   },
+  "homepage": "https://github.com/yunzecho-eng/Study-Tool-Kit",
+  "repository": "https://github.com/yunzecho-eng/Study-Tool-Kit",
   "license": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
   "keywords": [
     "learning",
@@ -13,25 +15,26 @@
     "textbook",
     "personalized-learning",
     "adult-learning",
-    "source-vetting"
+    "source-vetting",
+    "exam-preparation",
+    "answer-writing"
   ],
   "skills": "./skills/",
-  "homepage": "https://github.com/H-Hur/study-kit",
-  "repository": "https://github.com/H-Hur/study-kit",
   "interface": {
-    "displayName": "Study Kit",
-    "shortDescription": "Skip what you know. Focus on what you need to learn.",
-    "longDescription": "Quickly get oriented in an adjacent field when you do not have time to work through an entire textbook and all its exercises. Start from what you already know, skip familiar material, and focus on your target capability. Verify sources, build a focused plan and textbook, and revise it from your questions. Includes 14 skills. Local PDF publishing requires a compatible browser and Poppler, or a suitable host PDF tool.",
-    "developerName": "Hyeonoh Hur",
+    "displayName": "Study Kit Personal",
+    "shortDescription": "Understand your course and practice writing exam answers.",
+    "longDescription": "A personal adaptation of Hyeonoh Hur's Study Kit. Verify sources, build focused study materials, and revise them from your questions. Exam preparation adds course scope, a three-point essay default, separate explanation and answer languages, and a record of the latest materials and next action. Includes 15 skills. DOCX and PDF output requires suitable host document tools; the kit supplies procedures and templates.",
+    "developerName": "yunzecho-eng",
     "category": "Productivity",
     "capabilities": [
       "Read",
       "Write"
     ],
-    "websiteURL": "https://github.com/H-Hur/study-kit",
+    "websiteURL": "https://github.com/yunzecho-eng/Study-Tool-Kit",
     "defaultPrompt": [
       "Help me start a course of study by asking about my background and goals.",
       "Prepare my next study session from the curriculum and remaining questions.",
+      "Use exam-study to prepare from my lecture materials, practice writing answers, and keep track of the latest files.",
       "Revise my textbook from the pending changes and prepare both PDF editions."
     ]
   }

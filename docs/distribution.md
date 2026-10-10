@@ -1,5 +1,11 @@
 # One repository, two hosts
 
+This checkout is the personal adaptation `2.1.0-personal.2`, maintained by
+`yunzecho-eng` at the private repository `yunzecho-eng/Study-Tool-Kit`.
+The commands below target this edition and require authorized GitHub access;
+use the local-checkout route if your host cannot fetch a private repository. See the
+[personal edition record](../plugins/study-kit/docs/personal-edition.md).
+
 Both editions ship in the same GitHub commit, tag, and release version. The existing
 Claude Code package is the maintained source; the Codex package is a generated
 adaptation. Users install the edition for their host without running a build.
@@ -11,15 +17,16 @@ adaptation. Users install the edition for their host without running a build.
 
 The marketplace is named `study-kit` in both hosts. The Codex plugin identifier is
 `study-kit-codex` so its generated directory and manifest name agree; its displayed
-name is Study Kit. No second repository or independently maintained release is needed.
+name is Study Kit Personal. No second repository or independently maintained release is needed.
 
 ## Install and update
 
 For desktop menus, agent-assisted chat requests, downloaded repository installs,
 and the distinction between Claude Code and Cowork, use the
 [desktop installation guide](desktop-install.md). Desktop guidance was checked
-against official host documentation on 2026-09-08. The commands below remain the
-CLI route.
+against official host documentation on 2026-09-08, and its recorded smoke tests
+used upstream Study Kit 2.0.0. Installation of this personal edition from the
+private repository remains unverified. The commands below are the CLI route.
 
 The GitHub commands below become available after the commit containing the Codex
 marketplace and generated package is published to the repository's default branch.
@@ -27,14 +34,14 @@ marketplace and generated package is published to the repository's default branc
 Claude Code:
 
 ```text
-/plugin marketplace add H-Hur/study-kit
+/plugin marketplace add yunzecho-eng/Study-Tool-Kit
 /plugin install study-kit@study-kit
 ```
 
 Codex, from a terminal:
 
 ```bash
-codex plugin marketplace add H-Hur/study-kit
+codex plugin marketplace add yunzecho-eng/Study-Tool-Kit
 codex plugin add study-kit-codex@study-kit
 ```
 
@@ -65,8 +72,8 @@ links to `docs/codex-runtime.md`, sourced from `codex/runtime.md`, for Codex.
 Claude commands, agent definitions, tool lists, and runtime guidance remain in
 the Claude package. Codex users receive host-specific execution instructions.
 
-The generator retains the six skills and their templates and references, turns the
-four commands and four specialist agents into eight additional skills, and rebases
+The generator retains the seven skills and their templates and references, turns the
+four commands and four specialist agents into eight additional skills (15 total), and rebases
 the Markdown links to the resulting layout. It removes Claude's `tools` and
 `argument-hint` frontmatter from the converted files.
 
@@ -114,7 +121,7 @@ The generator requires Python 3.9 or newer and no third-party packages.
 
 3. Review the changed source and generated package together. Commit both packages,
    both marketplace catalogs, and the shared documentation in one commit. Tag that
-   commit with the common version, for example `v1.2.0`.
+   commit with the common version, for example `v2.1.0-personal.2`.
 4. Publish that commit/tag to GitHub. GitHub-based installations read the committed
    package directly. The optional `dist/study-kit-codex-<version>.zip` contains just
    the Codex plugin and its license and may be attached to the same GitHub release.
@@ -153,6 +160,11 @@ The packaging decisions were checked on 2026-09-06 against official OpenAI docum
 - [Submit plugins](https://developers.openai.com/plugins/deploy/submission)
 
 ## Version 2.0.0 — licensing and intended use (2026-09-08)
+
+For the subsequent personal adaptation, see
+[2.1.0-personal.2](../plugins/study-kit/docs/personal-edition.md). The section below
+records the upstream licensing transition; the personal edition retains these
+component terms.
 
 This release changes the offered license terms: code uses PolyForm Noncommercial
 1.0.0; documents and prompts use CC BY-NC-SA 4.0. The manifest expression uses AND

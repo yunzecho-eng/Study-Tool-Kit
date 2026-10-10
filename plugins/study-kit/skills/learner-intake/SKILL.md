@@ -8,6 +8,12 @@ Read the [runtime notes](../../docs/runtime.md) once per task before following t
 
 # Learner intake — what to ask before anything else
 
+For exam preparation, use [exam-study](../exam-study/SKILL.md) for a bounded
+intake based on the supplied assessment, materials, and existing preferences.
+Ask only what blocks the current task; a single requested practice set does not
+need a complete new course profile. The procedure below remains the default for
+starting a standard course.
+
 ## Why the conductor must do this directly
 
 Intake is an exchange with the learner. In this kit, delegated roles report to the

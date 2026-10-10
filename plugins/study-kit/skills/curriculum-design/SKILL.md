@@ -8,6 +8,11 @@ Read the [runtime notes](../../docs/runtime.md) once per task before following t
 
 # Curriculum design — working backward from capability
 
+For an exam-preparation plan, use [exam-study](../exam-study/SKILL.md) to map
+included and excluded scope to course sources and answer/practice tasks. An
+existing active exam plan is sufficient for continuing that work; do not demand
+a new full-course curriculum. Use the procedure below for a standard course.
+
 The inputs are `docs/learner-profile.md` and `REFERENCES.md`. If either is missing, do not
 start here — a plan built without the profile becomes generic, and a plan built without the
 sources has no basis.

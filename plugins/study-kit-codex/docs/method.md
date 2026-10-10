@@ -5,7 +5,16 @@ procedure written here, and this order decides which part is used when. No field
 appears anywhere in it. **What to teach is settled by the kit asking the learner** — this
 is the first and most important rule of the kit.
 
-## What the kit assumes and what it does not
+## Personal edition: exam preparation
+
+This edition adds an [exam-study](../skills/exam-study/SKILL.md) route for
+assessment preparation from the learner's existing course materials. It retains
+source checks and feedback, while using a focused exam plan and practice artifacts
+when a full textbook is unnecessary. The personal defaults are conditional on
+exam mode and yield to the learner's choices. See the
+[adaptation record](personal-edition.md) for their basis and limits.
+
+## What the standard course assumes and what it does not
 
 Use it when you want to get oriented in a field quickly but do not have time to
 work carefully through an entire textbook and all its exercises. Start from what

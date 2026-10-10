@@ -9,6 +9,7 @@ import argparse
 import json
 import os
 import re
+import stat
 import sys
 import zipfile
 from pathlib import Path
@@ -17,7 +18,74 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "plugins/study-kit"
 NAME = "study-kit-codex"
 OUTPUT = ROOT / "plugins" / NAME
+SOURCE_FOLDERS = ("skills", "agents", "commands", "docs", "templates", "licenses")
+SOURCE_SUFFIXES = frozenset({".md", ".html", ".txt"})
+LOCAL_FILE_STEMS = frozenset({"credentials", "secrets", "id_rsa", "id_dsa",
+                              "id_ecdsa", "id_ed25519"})
 LINK = re.compile(r"(\[[^\]\n]*\]\()([^\s)]+)(\))")
+EXPECTED_SKILLS = frozenset({
+    "learner-intake", "source-index", "curriculum-design", "textbook-authoring",
+    "textbook-revision", "textbook-publish", "exam-study",
+    "study-start", "study-session", "study-review", "study-publish",
+    "source-scout", "drill-designer", "textbook-auditor", "comprehension-auditor",
+})
+
+
+def require_plain_path(path: Path, root: Path) -> None:
+    """Reject linked package paths before reading or writing through them."""
+    try:
+        relative = path.absolute().relative_to(root.absolute())
+    except ValueError:
+        raise ValueError(f"Package path is outside its root: {path}") from None
+    for current in (root, *(root / Path(*relative.parts[:i])
+                             for i in range(1, len(relative.parts) + 1))):
+        try:
+            info = current.lstat()
+        except FileNotFoundError:
+            continue
+        if (stat.S_ISLNK(info.st_mode) or
+                getattr(info, "st_file_attributes", 0) &
+                getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)):
+            raise ValueError(f"Linked package path requires review: {current}")
+    if not path.resolve().is_relative_to(root.resolve()):
+        raise ValueError(f"Package path is outside its root: {path}")
+
+
+def checked_tree(folder: Path, root: Path):
+    """Walk without descending into a symlink or Windows reparse point."""
+    require_plain_path(folder, root)
+    if not folder.exists():
+        return
+    for path in sorted(folder.iterdir()):
+        require_plain_path(path, root)
+        yield path
+        if path.is_dir():
+            yield from checked_tree(path, root)
+
+
+def source_files():
+    """Fail closed on local files; supported text still needs content review."""
+    require_plain_path(SOURCE, ROOT)
+    for folder in SOURCE_FOLDERS:
+        for path in checked_tree(SOURCE / folder, SOURCE):
+            relative = path.relative_to(SOURCE)
+            if any(part.startswith(".") for part in relative.parts):
+                raise ValueError(f"Hidden/local source path requires review: {relative}")
+            if path.is_dir():
+                continue
+            if (not path.is_file() or path.suffix not in SOURCE_SUFFIXES or
+                    path.stem.casefold() in LOCAL_FILE_STEMS):
+                raise ValueError(f"Unsupported/local source file requires review: {relative}")
+            yield path
+
+
+def release_version(manifest: dict) -> str:
+    version = manifest.get("version")
+    if (not isinstance(version, str) or len(version) > 128 or
+            not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?"
+                             r"(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?", version)):
+        raise ValueError("Invalid release version; expected a safe semantic version")
+    return version
 
 
 def replace_once(text: str, old: str, new: str) -> str:
@@ -131,45 +199,50 @@ def link_skill_mentions(text: str, target: Path) -> str:
 
 
 def render() -> dict[Path, bytes]:
+    require_plain_path(SOURCE, ROOT)
+    for path in (SOURCE / ".claude-plugin/plugin.json", SOURCE / "LICENSE",
+                 ROOT / "codex/runtime.md", ROOT / "codex/interface.json"):
+        require_plain_path(path, ROOT)
     validate_catalogs()
+    manifest = json.loads((SOURCE / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
+    release_version(manifest)
     files = {}
-    for folder in ("skills", "agents", "commands", "docs", "templates", "licenses"):
-        for path in sorted((SOURCE / folder).rglob("*")):
-            if not path.is_file():
-                continue
-            target = destination(path)
-            if target in files:
-                raise ValueError(f"Duplicate Codex skill or file: {target}")
-            if path == SOURCE / "docs/runtime.md":
-                files[target] = (ROOT / "codex/runtime.md").read_bytes()
-                continue
-            if path.suffix == ".md":
-                # Rebase existing links before adding links already written for the target.
-                value = rewrite_links(path.read_text(), path, target)
-                value = adapt(value, path)
-                value = link_skill_mentions(value, target)
-                if path.parent == SOURCE / "agents":
-                    _, header, body = value.split("---", 2)
-                    note = ('\n\n## Codex role execution\n\n'
-                            'This is a specialist procedure, not a registered custom agent.\n'
-                            'From the main conversation, follow the runtime notes for bounded\n'
-                            'delegation, required inputs, permitted writes, and result collection.\n'
-                            'If already assigned this role as a subagent, execute it here and\n'
-                            'return the result; do not delegate this same role again. If subagents\n'
-                            'are unavailable, perform it directly with the same restrictions.\n')
-                    value = f"---{header}---{note}{body}"
-                files[target] = value.encode()
-            else:
-                files[target] = path.read_bytes()
+    for path in source_files():
+        target = destination(path)
+        if target in files:
+            raise ValueError(f"Duplicate Codex skill or file: {target}")
+        if path == SOURCE / "docs/runtime.md":
+            files[target] = (ROOT / "codex/runtime.md").read_bytes()
+            continue
+        if path.suffix == ".md":
+            # Rebase existing links before adding links already written for the target.
+            value = rewrite_links(path.read_text(encoding="utf-8"), path, target)
+            value = adapt(value, path)
+            value = link_skill_mentions(value, target)
+            if path.parent == SOURCE / "agents":
+                _, header, body = value.split("---", 2)
+                note = ('\n\n## Codex role execution\n\n'
+                        'This is a specialist procedure, not a registered custom agent.\n'
+                        'From the main conversation, follow the runtime notes for bounded\n'
+                        'delegation, required inputs, permitted writes, and result collection.\n'
+                        'If already assigned this role as a subagent, execute it here and\n'
+                        'return the result; do not delegate this same role again. If subagents\n'
+                        'are unavailable, perform it directly with the same restrictions.\n')
+                value = f"---{header}---{note}{body}"
+            files[target] = value.encode()
+        else:
+            files[target] = path.read_bytes()
 
-    manifest = json.loads((SOURCE / ".claude-plugin/plugin.json").read_text())
     manifest.update(
         name=NAME,
-        description="Study support bundle for quickly learning what you need when you lack time for a full textbook and all its exercises. Skip familiar material and build a focused plan and textbook from your background and goal. Includes 14 Codex skills.",
+        description=("Study Kit Personal, a personal adaptation of Hyeonoh Hur's Study Kit. "
+                     "Build focused study materials and prepare for exams from verified "
+                     "course sources, with answer-writing practice and reusable preferences. "
+                     f"Includes {len(EXPECTED_SKILLS)} Codex skills."),
         skills="./skills/",
-        homepage="https://github.com/H-Hur/study-kit",
-        repository="https://github.com/H-Hur/study-kit",
-        interface=json.loads((ROOT / "codex/interface.json").read_text()),
+        homepage=manifest.get("homepage", "https://github.com/H-Hur/study-kit"),
+        repository=manifest.get("repository", "https://github.com/H-Hur/study-kit"),
+        interface=json.loads((ROOT / "codex/interface.json").read_text(encoding="utf-8")),
     )
     files[Path(".codex-plugin/plugin.json")] = (json.dumps(manifest, indent=2, ensure_ascii=False) + "\n").encode()
     files[Path("LICENSE")] = (SOURCE / "LICENSE").read_bytes()
@@ -182,7 +255,8 @@ def validate_catalogs() -> None:
         (ROOT / ".claude-plugin/marketplace.json", "study-kit"),
         (ROOT / ".agents/plugins/marketplace.json", NAME),
     ):
-        catalog = json.loads(catalog_path.read_text())
+        require_plain_path(catalog_path, ROOT)
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
         if catalog.get("name") != "study-kit":
             raise ValueError(f"Installation instructions require marketplace name study-kit: {catalog_path}")
         entries = [entry for entry in catalog["plugins"] if entry.get("name") == plugin_name]
@@ -208,9 +282,13 @@ def validate(files: dict[Path, bytes]) -> None:
                      "licenses/CC-BY-NC-SA-4.0.txt"):
         if not files.get(Path(required)):
             raise ValueError(f"Missing bundled license: {required}")
-    skills = [p for p in files if p.name == "SKILL.md"]
-    if len(skills) != 14:
-        raise ValueError(f"Expected 6 skills + 4 commands + 4 roles, found {len(skills)}; review the release metadata")
+    skills = {p for p in files if p.name == "SKILL.md"}
+    expected = {Path("skills") / name / "SKILL.md" for name in EXPECTED_SKILLS}
+    if skills != expected:
+        missing = sorted(path.as_posix() for path in expected - skills)
+        unexpected = sorted(path.as_posix() for path in skills - expected)
+        raise ValueError(f"Unexpected skill set; missing={missing}, unexpected={unexpected}; "
+                         "review the release metadata")
     for path, data in files.items():
         if path.suffix != ".md":
             continue
@@ -241,13 +319,14 @@ def validate(files: dict[Path, bytes]) -> None:
                 raise ValueError(f"Broken bundled link: {path} -> {link}")
 
 
-def main() -> int:
+def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="Fail if the committed package differs from the sources")
     parser.add_argument("--archive", action="store_true", help="Also write a reproducible ZIP under dist/")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     files = render()
-    existing = {p.relative_to(OUTPUT): p for p in OUTPUT.rglob("*") if p.is_file()}
+    require_plain_path(OUTPUT, ROOT)
+    existing = {p.relative_to(OUTPUT): p for p in checked_tree(OUTPUT, OUTPUT) if p.is_file()}
     stale = sorted(set(existing) - set(files))
     changed = [p for p, data in files.items() if p not in existing or existing[p].read_bytes() != data]
     if args.check:
@@ -261,12 +340,15 @@ def main() -> int:
             raise ValueError(f"Unexpected files in generated package; review and remove them before rebuilding: {stale}")
         for path in changed:
             target = OUTPUT / path
+            require_plain_path(target, OUTPUT)
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(files[path])
-    print(f"Codex package {'checked' if args.check else 'built'}: {len(files)} files, 14 skills")
+    print(f"Codex package {'checked' if args.check else 'built'}: "
+          f"{len(files)} files, {len(EXPECTED_SKILLS)} skills")
     if args.archive:
-        version = json.loads(files[Path(".codex-plugin/plugin.json")])["version"]
+        version = release_version(json.loads(files[Path(".codex-plugin/plugin.json")]))
         archive = ROOT / "dist" / f"{NAME}-{version}.zip"
+        require_plain_path(archive, ROOT)
         archive.parent.mkdir(exist_ok=True)
         with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as bundle:
             for path, data in sorted(files.items()):
