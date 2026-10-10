@@ -1,0 +1,29 @@
+1
+00:00:00,000 --> 00:00:08,667
+Turn what you read into answers you can explain. Study Tool Kit is a study companion for Codex and Claude Code.
+읽은 내용을 설명할 수 있는 내 답안으로. Study Tool Kit은 Codex와 Claude Code에서 쓰는 학습 도구입니다.
+
+2
+00:00:08,667 --> 00:00:16,667
+Start with your course materials and exam guidance. Define what to study, and what to leave out.
+강의자료와 시험 안내에서 시작하세요. 공부할 범위와 제외할 내용을 먼저 정리합니다.
+
+3
+00:00:16,667 --> 00:00:25,458
+Build answers step by step: key facts, a logical outline, a model answer, and your own attempt.
+핵심 사실, 논리 흐름, 예시 답안, 직접 작성. 답안 쓰기를 단계적으로 연습합니다.
+
+4
+00:00:25,458 --> 00:00:34,500
+Choose separate languages for explanations and practice. Ask for harder questions while keeping excluded topics out.
+설명과 연습문제의 언어를 따로 선택하세요. 난이도를 높여도 제외 범위는 유지합니다.
+
+5
+00:00:34,500 --> 00:00:44,542
+Need a worksheet? Request writing space and solutions at the end. Document output requires your app's document tools.
+학습지가 필요하면 필기 공간과 맨 뒤 해설을 요청하세요. 문서 출력에는 앱의 문서 도구가 필요합니다.
+
+6
+00:00:44,542 --> 00:00:54,500
+Next time, continue from your saved plan. Keep your study materials in a separate folder, and pick up where you left off.
+다음에는 저장된 계획에서 이어가세요. 공부 자료는 별도 폴더에 보관하고, 지난 지점부터 계속하세요.

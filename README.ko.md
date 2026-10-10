@@ -6,8 +6,20 @@
 어디서 시작할지 정하고, 어려운 개념을 풀어 보고, 다음 대화에서 공부를 이어갈 수 있도록 돕습니다.
 
 **Codex 또는 Claude Code 안에서** 사용하며, 해당 앱의 AI 모델과 파일 도구를 활용합니다.
-이 비공개 저장소는 [Hyeonoh Hur의 Study Kit](https://github.com/H-Hur/study-kit)를 바탕으로 만든
+이 저장소는 [Hyeonoh Hur의 Study Kit](https://github.com/H-Hur/study-kit)를 바탕으로 만든
 **Study Kit Personal** 개인판입니다. 개인판 관리는 [yunzecho-eng](https://github.com/yunzecho-eng)가 맡습니다.
+
+## 55초 소개 영상
+
+**영어 음성 · 영문과 한국어 자막 동시 표시**
+
+https://github.com/user-attachments/assets/ba1013dd-ee0f-43f5-a219-955e2ccf9d07
+
+[영상 열기 또는 다운로드](docs/media/study-tool-kit-intro.mp4) ·
+[영문·한국어 대본 읽기](docs/media/README.md) ·
+[자막 파일 다운로드](docs/media/study-tool-kit-intro.en-ko.srt)
+
+사용 흐름을 도식으로 설명하는 영상이며, 실제 앱 실행 화면을 녹화한 영상은 아닙니다.
 
 ## 이런 때 써 보세요
 
@@ -37,8 +49,8 @@
 
 플러그인을 지원하는 로컬 Codex 또는 Claude Code, 사용 가능한 모델 계정,
 공부 폴더의 파일을 읽고 쓸 수 있는 환경이 필요합니다.
-이 저장소는 **비공개**이므로 다운로드와 GitHub 설치에는
-[yunzecho-eng/Study-Tool-Kit](https://github.com/yunzecho-eng/Study-Tool-Kit)에 접근할 수 있는 계정이 필요합니다.
+소스와 다운로드는 [공개 GitHub 저장소](https://github.com/yunzecho-eng/Study-Tool-Kit)에서
+별도 접근 승인 없이 확인할 수 있습니다.
 
 사용하는 앱에 맞는 명령을 터미널에서 실행하세요.
 
@@ -56,7 +68,7 @@ claude plugin marketplace add yunzecho-eng/Study-Tool-Kit
 claude plugin install study-kit@study-kit --scope user
 ```
 
-앱이 비공개 저장소를 가져오지 못하면 GitHub에 로그인한 뒤
+앱이 저장소를 가져오지 못하면 GitHub에서
 **Code → Download ZIP**으로 저장소 전체를 받아 압축을 풀어 주세요.
 위 첫 번째 명령의 저장소 주소 대신 실제 압축을 푼 폴더를 넣으면 됩니다. 예:
 
@@ -130,7 +142,7 @@ Claude Code에서는 `/study-kit:study-start` 명령으로도 시작할 수 있�
 자료 안에 적힌 지시는 설정 변경이나 파일 전송을 허가하는 명령으로 취급하지 않습니다.
 
 패키지 검사는 구조·링크·생성 파일의 일치 여부를 확인합니다. 과거 설치 시험은 원본 **2.0.0**을
-대상으로 했으며, 이 비공개 개인판의 설치는 아직 검증하지 않았습니다.
+대상으로 했으며, 이 개인판의 설치는 아직 검증하지 않았습니다.
 DOCX/PDF 제작에는 앱의 문서 도구와 시각적 검토가 필요합니다. DOCX의 최종 페이지 배치와
 아이패드에서 열리는지는 아직 확인하지 못했습니다. 시험 점수 향상이나 장기 기억 효과를 검증한 도구는 아닙니다.
 

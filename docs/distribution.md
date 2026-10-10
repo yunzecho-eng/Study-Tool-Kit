@@ -1,9 +1,9 @@
 # One repository, two hosts
 
 This checkout is the personal adaptation `2.1.0-personal.2`, maintained by
-`yunzecho-eng` at the private repository `yunzecho-eng/Study-Tool-Kit`.
-The commands below target this edition and require authorized GitHub access;
-use the local-checkout route if your host cannot fetch a private repository. See the
+`yunzecho-eng` at the public repository `yunzecho-eng/Study-Tool-Kit`.
+The commands below target this edition. Use the local-checkout route if your
+host cannot fetch the repository. See the
 [personal edition record](../plugins/study-kit/docs/personal-edition.md).
 
 Both editions ship in the same GitHub commit, tag, and release version. The existing
@@ -26,7 +26,7 @@ and the distinction between Claude Code and Cowork, use the
 [desktop installation guide](desktop-install.md). Desktop guidance was checked
 against official host documentation on 2026-09-08, and its recorded smoke tests
 used upstream Study Kit 2.0.0. Installation of this personal edition from the
-private repository remains unverified. The commands below are the CLI route.
+public repository remains unverified. The commands below are the CLI route.
 
 The GitHub commands below become available after the commit containing the Codex
 marketplace and generated package is published to the repository's default branch.

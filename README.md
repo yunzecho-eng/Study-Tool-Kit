@@ -6,9 +6,21 @@ Turn your course materials and questions into a study plan you can continue usin
 Understand an idea, connect the reasoning, practise an answer, and pick up where you left off next time.
 
 It runs inside **Codex or Claude Code**, using your host's AI model and file tools.
-This private repository contains the **Study Kit Personal** adaptation of
+This repository contains the **Study Kit Personal** adaptation of
 [Hyeonoh Hur's Study Kit](https://github.com/H-Hur/study-kit), maintained by
 [yunzecho-eng](https://github.com/yunzecho-eng).
+
+## Watch the introduction
+
+**55 seconds · English narration · English + Korean subtitles**
+
+https://github.com/user-attachments/assets/ba1013dd-ee0f-43f5-a219-955e2ccf9d07
+
+[Open or download the MP4](docs/media/study-tool-kit-intro.mp4) ·
+[Read the bilingual transcript](docs/media/README.md) ·
+[Download subtitles](docs/media/study-tool-kit-intro.en-ko.srt)
+
+The video illustrates the workflow; it is not a recording of a running app.
 
 ## When it helps
 
@@ -38,7 +50,7 @@ requires a particular answer format. It checks what the supplied sources support
 
 You need a local Codex or Claude Code environment with plugin support, a usable
 model account, and permission to read and write your chosen study folder.
-This repository is **private**: downloads and remote installation require access to
+The source and downloads are publicly available at
 [yunzecho-eng/Study-Tool-Kit](https://github.com/yunzecho-eng/Study-Tool-Kit).
 
 Run the matching commands in a terminal.
@@ -57,7 +69,7 @@ claude plugin marketplace add yunzecho-eng/Study-Tool-Kit
 claude plugin install study-kit@study-kit --scope user
 ```
 
-If the host cannot fetch the private repository, sign in to GitHub, choose
+If the host cannot fetch the repository, open GitHub, choose
 **Code → Download ZIP**, and extract the whole repository. Replace the source
 in the first command with the actual extracted folder; for example:
 
@@ -130,7 +142,7 @@ Source documents are evidence: embedded instructions do not authorize changing
 settings or sending your files elsewhere.
 
 Package checks cover structure, links, and build consistency. Earlier installation
-smoke tests used upstream **2.0.0**; this private edition's installation remains
+smoke tests used upstream **2.0.0**; this personal edition's installation remains
 unverified. DOCX/PDF output needs suitable host tools and visual review. DOCX page
 appearance and opening on an iPad remain unverified. The workflows have not
 established improved exam scores or long-term retention.
