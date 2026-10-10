@@ -18,7 +18,8 @@ https://github.com/user-attachments/assets/8d81103b-c068-427a-9a0c-cd6929cf9754
 
 [Open or download the MP4](docs/media/study-tool-kit-intro.mp4) ·
 [Read the bilingual transcript](docs/media/README.md) ·
-[Download subtitles](docs/media/study-tool-kit-intro.en-ko.srt)
+[Download subtitles](docs/media/study-tool-kit-intro.en-ko.srt) ·
+[Preview image](docs/media/study-tool-kit-intro-poster.png)
 
 The video illustrates the workflow; it is not a recording of a running app.
 
