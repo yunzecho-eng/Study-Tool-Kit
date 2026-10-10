@@ -14,7 +14,7 @@ This repository contains the **Study Kit Personal** adaptation of
 
 **55 seconds · English narration · English + Korean subtitles**
 
-https://github.com/user-attachments/assets/ba1013dd-ee0f-43f5-a219-955e2ccf9d07
+https://github.com/user-attachments/assets/8d81103b-c068-427a-9a0c-cd6929cf9754
 
 [Open or download the MP4](docs/media/study-tool-kit-intro.mp4) ·
 [Read the bilingual transcript](docs/media/README.md) ·

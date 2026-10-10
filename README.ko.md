@@ -13,7 +13,7 @@
 
 **영어 음성 · 영문과 한국어 자막 동시 표시**
 
-https://github.com/user-attachments/assets/ba1013dd-ee0f-43f5-a219-955e2ccf9d07
+https://github.com/user-attachments/assets/8d81103b-c068-427a-9a0c-cd6929cf9754
 
 [영상 열기 또는 다운로드](docs/media/study-tool-kit-intro.mp4) ·
 [영문·한국어 대본 읽기](docs/media/README.md) ·
